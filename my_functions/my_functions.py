@@ -1,4 +1,4 @@
-def groupby_mean_and_len(df, use_cols, groupby_col):
+def groupby_avg_and_len(df, use_cols, groupby_col, mean_only=True):
     """Groupby on a df object with mean and count
 
     Args:
@@ -9,16 +9,21 @@ def groupby_mean_and_len(df, use_cols, groupby_col):
     Returns:
         _type_: _description_
     """
+
     import numpy as np
     import pandas as pd
     df = df.copy()
-    grouped = df[use_cols].groupby(groupby_col).aggregate([np.mean, len])
-    # give it a new index because the MultiIndex is confusing
-    grouped.columns = pd.Index(("mean_" + [col for col in use_cols if col != groupby_col][0], "count"))
+    if mean_only:
+        grouped = df[use_cols].groupby(groupby_col).aggregate([np.mean, len])
+    else:
+        from scipy import stats
+        grouped = df[use_cols].groupby(groupby_col).aggregate([np.mean, np.median, stats.mode, len])
+
+    grouped.columns = grouped.columns.to_flat_index()
+    grouped.columns = ["_".join(col) for col in grouped.columns]
     return grouped
 
-
-def get_zip_means(df):
+def get_zip_averages(df, mean_only=True):
     """
     Generates a DataFrame with lat and long information about ZIPs.
     Args:
@@ -34,9 +39,11 @@ def get_zip_means(df):
     nomi = pgeocode.Nominatim("us")
 
     # group by zipcode and get the mean price for each one along with the count
-    zips = groupby_mean_and_len(df, ["zipcode", "price"], "zipcode")
+    zips = groupby_avg_and_len(df, ["zipcode", "price"], "zipcode", mean_only)
     # round
-    zips["mean_price"] = np.around(zips["mean_price"], -3).astype(int)
+    zips["price_mean"] = np.around(zips["price_mean"], -3).astype(int)
+    if not mean_only:
+        zips["price_median"] = np.around(zips["price_median"], -3).astype(int)
     # get lat and long for zip codes
     zips["latitude"] = zips.index.to_series().apply(lambda s: nomi.query_postal_code(s)["latitude"])
     zips["longitude"] = zips.index.to_series().apply(lambda s: nomi.query_postal_code(s)["longitude"])
