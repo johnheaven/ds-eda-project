@@ -1,6 +1,4 @@
-# ds-project-template
-
-Template for creating ds simple projects
+# Data science EDA project
 
 ## Requirements
 
