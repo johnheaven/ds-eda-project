@@ -8,8 +8,9 @@ The Jupyter notebook can be found here: [Jupyter notebook](./EDA.ipynb).
 
 Part of the assignment was a presentation of results. You can view this [here](./EDA%20presentation.pdf), although I have updated the notebook since presenting it and may continue to do so.
 
-Details of the assignment: [assignment.md](./assignment.md)
-Description of an EDA workflow (by Neue Fische): [workflow.md](./workflow.md)
+* Details of the assignment: [assignment.md](./assignment.md)
+
+* Description of an EDA workflow (by Neue Fische): [workflow.md](./workflow.md)
 
 The Jupyter notebook should be viewable on GitHub, but if you wish to download this and kick the tyres, be my guest.
 
