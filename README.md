@@ -1,36 +1,30 @@
-# ds-project-template
 
-Template for creating ds simple projects
+
+# Exploratory Data Analysis (EDA) project – first Neue Fische assignment
+
+This repository is based on a Neue Fische template. The assignment was to explore publicly available data on house prices in King County, USA. The data covers the period from May 2014 to 2015. We were given a choice of fictitious scenarios to choose from and had to advise a putative client on investment decisions.
+
+Because the data is for past sales, not asking prices of available houses, I took the approach of attempting to draw some inferences from the data and assuming that they would still hold in the future.
+
+The Jupyter notebook can be found here: [Jupyter notebook](./EDA.ipynb).
+
+Part of the assignment was a presentation of results. You can view this [here](./EDA%20presentation.pdf), although I have updated the notebook since presenting it and may continue to do so.
+
+Details of the assignment: [assignment.md](./assignment.md)
+Description of an EDA workflow (by Neue Fische): [workflow.md](./workflow.md)
+
+The Jupyter notebook should be viewable on GitHub, but if you wish to download this and kick the tyres, be my guest.
 
 ## Requirements
 
-- pyenv
-- python==3.9.8
+See requirements.txt and setup information below.
 
 ## Setup
 
-One of the first steps when starting any data science project is to create a virtual environment. For this project you have to create this environment from scratch yourself. However, you should be already familiar with the commands you will need to do so. The general workflow consists of... 
-
-* setting the python version locally to 3.9.8
-* creating a virtual environment using the `venv` module
-* activating your newly created environment 
-* upgrading `pip` (This step is not absolutely necessary, but will save you trouble when installing some packages.)
-* installing the required packages via `pip`
-
-At the end, you want to make sure that people who are interested in your project can create an identical environment on their own computer in order to be able to run your code without running into errors. Therefore you can create a `requirements file` and add it to your repository. You can create such a file by running the following command: 
-
-```bash
-pip freeze > requirements.txt
 ```
-
-*Note: In rare case such a requirements file created with `pip freeze` might not ensure that another (especially M1 chip) user can install and execute it properly. This can happen if libraries need to be compiled (e.g. SciPy). Then it also depends on environment variables and the actual system libraries.*
-
-### Unit testing (Optional)
-
-If you write python scripts for your data processing methods, you can also write unit tests. In order to run the tests execute in terminal:
-
-```bash
-pytest
+pyenv local 3.11.1
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
-
-This command will execute all the functions in your project that start with the word **test**.
