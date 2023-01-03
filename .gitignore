@@ -1,6 +1,8 @@
 # ignore HTML/images/data folders
-html/* !.gitkeep
-images/* !.gitkeep
+html/*
+!/html/.gitkeep
+images/*
+!/images/.gitkeep
 data
 
 
