@@ -1,5 +1,3 @@
-
-
 # Exploratory Data Analysis (EDA) project – first Neue Fische assignment
 
 This repository is based on a Neue Fische template. The assignment was to explore publicly available data on house prices in King County, USA. The data covers the period from May 2014 to 2015. We were given a choice of fictitious scenarios to choose from and had to advise a putative client on investment decisions.
