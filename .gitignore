@@ -1,3 +1,10 @@
+# ignore HTML/images/data folders
+html/* !.gitkeep
+images/* !.gitkeep
+data
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
